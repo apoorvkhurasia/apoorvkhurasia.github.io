@@ -1,0 +1,47 @@
+{
+  "icons": [
+    {
+      "src": "/icon_1024x1024.d995f8f3ce3e54f467a7b56eaea8a81d.svg",
+      "sizes": "1024x1024",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/icon_512x512.d995f8f3ce3e54f467a7b56eaea8a81d.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/icon_384x384.d995f8f3ce3e54f467a7b56eaea8a81d.svg",
+      "sizes": "384x384",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/icon_256x256.d995f8f3ce3e54f467a7b56eaea8a81d.svg",
+      "sizes": "256x256",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/icon_192x192.d995f8f3ce3e54f467a7b56eaea8a81d.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/icon_128x128.d995f8f3ce3e54f467a7b56eaea8a81d.svg",
+      "sizes": "128x128",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/icon_96x96.d995f8f3ce3e54f467a7b56eaea8a81d.svg",
+      "sizes": "96x96",
+      "type": "image/svg+xml"
+    }
+  ],
+  "name": "MDTeX Note Taker",
+  "short_name": "mdtexnotes",
+  "orientation": "any",
+  "display": "standalone",
+  "start_url": "/",
+  "description": "Take notes in markdown and LaTeX",
+  "background_color": "#fffdf5",
+  "theme_color": "#2f3d58"
+}
