@@ -5,17 +5,17 @@ export interface AppState {
     contentController: ContentController | null;
     askStoreName: boolean;
     topics: Topic[];
-    selectedTopic: Topic | null;
-    selectedChapter: Chapter | null;
-    rawMarkdownText: string;
     caretPos: number;
     editorVisible: boolean;
     previewVisible: boolean;
     lastSaveTs: Date | null;
+    showContentControls: boolean;
 }
 export declare class App extends React.Component<{}, AppState> implements ContentObserver {
     private unsavedChapters;
     private storeNameInput;
+    private contentExplorerRef;
+    private contentViewerRef;
     private static readonly SAVE_INTERVAL;
     constructor(props: {});
     componentDidMount(): void;
@@ -27,17 +27,23 @@ export declare class App extends React.Component<{}, AppState> implements Conten
     private cancelCreatingStore;
     private openStore;
     private createOrOpenStore;
-    private loadChapter;
-    private chapterContentChanged;
+    private onSelectTopicRequested;
+    private onSelectChapterRequested;
+    private onChapterContentChanged;
     private saveUnsavedChapters;
-    private createNewTopic;
-    private createNewChapter;
-    private renameChapterRequseted;
+    private onNewTopicRequested;
+    private onDeleteTopicRequested;
+    private onDeleteChapterRequested;
+    private onNewChapterRequested;
+    private onRenameChapterRequested;
+    private selectTopic;
+    private selectChapter;
     onTopicCreated(topic: Topic): void;
-    onTopicRenamed(_topic: Topic, _newName: string): void;
+    onTopicRenamed(topic: Topic, newName: string): void;
     onTopicDeleted(topic: Topic): void;
-    onChapterCreated(_chapter: Chapter): void;
-    onChapterMoved(_chapter: Chapter, _newTopic: Topic): void;
+    onChapterCreated(chapter: Chapter): void;
+    onChapterMoved(chapter: Chapter, newTopic: Topic): void;
     onChapterRenamed(chapter: Chapter, newName: string): void;
-    onChapterDeleted(_chapter: Chapter): void;
+    onChapterSaved(chapter: Chapter, saveTs: Date): void;
+    onChapterDeleted(chapter: Chapter): void;
 }

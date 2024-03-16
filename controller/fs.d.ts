@@ -23,4 +23,5 @@ export declare class FileSystemController implements ContentController {
     private getMetadataFromFile;
     private writeMetadataToFile;
     private getChapterFileHandle;
+    private static getChapterFileName;
 }

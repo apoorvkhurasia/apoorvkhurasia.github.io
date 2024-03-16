@@ -6,20 +6,21 @@ export interface ChapterProps {
 export interface ChapterState {
     editingName: boolean;
     newChapterName: string;
-    chapter: Chapter;
+    isSelected: boolean;
 }
 export type ChapterRenameArgs = {
     chapter: Chapter;
     newName: string;
 };
 export declare class ChapterElement extends React.Component<ChapterProps, ChapterState> {
-    private liRef;
     private editorRef;
     constructor(chapterProps: ChapterProps);
     render(): React.JSX.Element;
+    markSelected(isSelected: boolean): void;
     private showEditor;
     private hideEditor;
     private processKeyboardInput;
     private loadChapter;
     private renameChapter;
+    private deleteChapterRequested;
 }

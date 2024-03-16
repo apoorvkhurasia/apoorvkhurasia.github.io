@@ -1,4 +1,4 @@
-import { Topic } from '../model/model';
+import { Chapter, Topic } from '../model/model';
 import React from 'react';
 export type ChapterCreationArgs = {
     topic: Topic;
@@ -8,13 +8,11 @@ export interface ExplorerProps {
     topics: Topic[];
 }
 export interface ExplorerState {
-    selectedChapterElement: HTMLLIElement | null;
-    selectedTopicElement: HTMLLIElement | null;
+    selectedChapter: Chapter | null;
     selectedTopic: Topic | null;
     isAddingTopic: boolean;
 }
 export declare class ContentExplorer extends React.Component<ExplorerProps, ExplorerState> {
-    private explorerRef;
     private createTopicElemRef;
     private topicElementRefs;
     constructor(props: ExplorerProps);
@@ -22,10 +20,10 @@ export declare class ContentExplorer extends React.Component<ExplorerProps, Expl
     componentWillUnmount(): void;
     shouldComponentUpdate(nextProps: Readonly<ExplorerProps>, nextState: Readonly<ExplorerState>): boolean;
     render(): React.JSX.Element;
+    markTopicSelected(topic: Topic | null): void;
+    markChapterSelected(chapter: Chapter | null): void;
     private createNewTopic;
     private createNewChapter;
-    private chapterSelected;
-    private topicSelected;
     private topicCreationCancelled;
     private newTopicRequested;
 }
