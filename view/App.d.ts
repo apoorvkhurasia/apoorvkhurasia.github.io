@@ -10,6 +10,7 @@ export interface AppState {
     previewVisible: boolean;
     lastSaveTs: Date | null;
     showContentControls: boolean;
+    darkMode: boolean;
 }
 export declare class App extends React.Component<{}, AppState> implements ContentObserver {
     private unsavedChapters;
