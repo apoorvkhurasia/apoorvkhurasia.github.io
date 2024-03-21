@@ -17,6 +17,7 @@ export declare class App extends React.Component<{}, AppState> implements Conten
     private storeNameInput;
     private contentExplorerRef;
     private contentViewerRef;
+    private saveTimer;
     private static readonly SAVE_INTERVAL;
     constructor(props: {});
     componentDidMount(): void;
@@ -24,6 +25,8 @@ export declare class App extends React.Component<{}, AppState> implements Conten
     render(): React.JSX.Element;
     private togglePreview;
     private toggleEditorVisibility;
+    private toggleLightMode;
+    private setThemeFromState;
     private createStore;
     private cancelCreatingStore;
     private openStore;

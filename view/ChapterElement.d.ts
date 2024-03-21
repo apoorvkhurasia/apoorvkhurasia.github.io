@@ -20,7 +20,7 @@ export declare class ChapterElement extends React.Component<ChapterProps, Chapte
     private showEditor;
     private hideEditor;
     private processKeyboardInput;
-    private loadChapter;
+    private selectChapterRequested;
     private renameChapter;
     private deleteChapterRequested;
 }

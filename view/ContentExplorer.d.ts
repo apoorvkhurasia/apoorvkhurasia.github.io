@@ -11,6 +11,7 @@ export interface ExplorerState {
     selectedChapter: Chapter | null;
     selectedTopic: Topic | null;
     isAddingTopic: boolean;
+    isVisible: boolean;
 }
 export declare class ContentExplorer extends React.Component<ExplorerProps, ExplorerState> {
     private createTopicElemRef;
@@ -26,4 +27,5 @@ export declare class ContentExplorer extends React.Component<ExplorerProps, Expl
     private createNewChapter;
     private topicCreationCancelled;
     private newTopicRequested;
+    private toggleVisibility;
 }
