@@ -1,1 +1,44 @@
-<!doctype html><html lang="en" class="light-mode"><head><title>Notemaker</title><meta name="author" content="Apoorv Khurasia"/><meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="icon" type="image/png" href="favicon.png"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link rel="icon" href="favicon.png"><script defer="defer" src="bundle.js"></script><meta name="theme-color" content="#2f3d58" /><link rel="manifest" href="/manifest.d2b671a79facf7c759e250695e482733.json" crossorigin="use-credentials" /><link rel="mask-icon" href="/icon_1024x1024.d995f8f3ce3e54f467a7b56eaea8a81d.svg" /></head><body><div id="app" class="ide-styled-grid"></div></body></html>
+---
+layout: default
+title: Home
+---
+
+{% if paginator.posts.size > 0 %}
+  {% for post in paginator.posts %}
+    <article class="post-card">
+      <div class="post-meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+        {% assign words = post.content | strip_html | number_of_words %}
+        {% if words < 200 %}{% assign rt = 1 %}{% else %}{% assign rt = words | divided_by: 200 %}{% endif %}
+        <span>{{ rt }} min read</span>
+      </div>
+      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+      <p class="excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
+      {% if post.tags.size > 0 %}
+        <div class="tags">
+          {% for tag in post.tags %}
+            <a href="{{ '/tags' | relative_url }}#{{ tag | slugify }}" class="tag">{{ tag }}</a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </article>
+  {% endfor %}
+
+  {% if paginator.total_pages > 1 %}
+    <nav class="pagination">
+      {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path | relative_url }}">← Newer</a>
+      {% else %}
+        <span class="disabled">← Newer</span>
+      {% endif %}
+      <span>Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+      {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path | relative_url }}">Older →</a>
+      {% else %}
+        <span class="disabled">Older →</span>
+      {% endif %}
+    </nav>
+  {% endif %}
+{% else %}
+  <p class="muted">No posts yet.</p>
+{% endif %}
