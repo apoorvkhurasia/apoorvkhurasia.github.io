@@ -9,7 +9,7 @@ Hi, I'm **Apoorv Khurasia**. I live in Kent, England and enjoy my time reading a
 
 I am an engineer by profession and currently work at Meta as an engineering leader. I previously spent 14 years at Morgan Stanley.
 
-In these pages, I want to share with you what I have learnt along the way --- often the hard way.
+Posts here will be about things I've found worth writing down — patterns that work well and lessons learned the hard way.
 
 ## Get in Touch
 

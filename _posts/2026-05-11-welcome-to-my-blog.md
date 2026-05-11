@@ -1,10 +1,10 @@
 ---
 title: "Welcome to My Blog"
 date: 2026-05-11 12:00:00 +0000
-tags: [meta]
+tags: [welcome]
 ---
 
-Welcome to my blog. I'm starting this space to write about software engineering, technology, and the ideas that show up in my work.
+Welcome to my blog. I'm starting this space to write about software engineering, technology, and leadership.
 
 ## What to Expect
 
