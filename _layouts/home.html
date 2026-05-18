@@ -1,0 +1,74 @@
+---
+layout: default
+---
+
+<div class="home-layout">
+  <aside class="home-sidebar" id="home-sidebar">
+    <p class="sidebar-heading">Tags</p>
+    <ul class="tag-filter-list" id="tag-filter-list">
+      <li class="tag-filter-all">
+        <button class="tag-filter-btn active" data-tag="">
+          <span class="tag-filter-name">All</span><span class="tag-count">({{ site.posts.size }})</span>
+        </button>
+      </li>
+      {% for tag in site.tags %}
+        <li>
+          <button class="tag-filter-btn" data-tag="{{ tag[0] | downcase }}" data-count="{{ tag[1].size }}">
+            <span class="tag-filter-name">{{ tag[0] }}</span><span class="tag-count">({{ tag[1].size }})</span>
+          </button>
+        </li>
+      {% endfor %}
+    </ul>
+  </aside>
+
+  <div class="home-main">
+    {{ content }}
+  </div>
+</div>
+
+<script>
+(function () {
+  var list = document.getElementById('tag-filter-list');
+  if (!list) return;
+
+  var allItem = list.querySelector('.tag-filter-all');
+  var items = Array.from(list.querySelectorAll('li:not(.tag-filter-all)'));
+  items.sort(function (a, b) {
+    return +b.querySelector('.tag-filter-btn').dataset.count - +a.querySelector('.tag-filter-btn').dataset.count;
+  });
+  items.forEach(function (item) { list.appendChild(item); });
+  list.insertBefore(allItem, list.firstChild);
+
+  var active = null;
+
+  function applyFilter(tag) {
+    active = tag;
+    document.querySelectorAll('.tag-filter-btn').forEach(function (btn) {
+      btn.classList.toggle('active', btn.dataset.tag === (tag || ''));
+    });
+    var cards = document.querySelectorAll('.post-card');
+    var visible = 0;
+    cards.forEach(function (card) {
+      var tags = (card.dataset.tags || '').split(',').map(function (t) { return t.trim(); });
+      var show = !tag || tags.indexOf(tag) !== -1;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    var msg = document.getElementById('no-posts-msg');
+    if (msg) msg.style.display = visible === 0 ? '' : 'none';
+  }
+
+  document.querySelectorAll('.tag-filter-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      applyFilter(btn.dataset.tag || null);
+    });
+  });
+
+  document.querySelectorAll('a.tag[data-filter-tag]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      applyFilter(active === a.dataset.filterTag ? null : a.dataset.filterTag);
+    });
+  });
+})();
+</script>

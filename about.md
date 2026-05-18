@@ -9,4 +9,4 @@ I am an engineer by profession and currently work at Meta as an engineering lead
 
 Posts here will be about things I've found worth writing down but there is no guarantee that they will all be about leadership or software.
 
-Views here are personal and do not represent those of my current or past company's views.
+Views here are personal and do not represent those of my current or past companies.
