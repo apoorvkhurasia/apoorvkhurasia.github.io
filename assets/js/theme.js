@@ -13,4 +13,11 @@
       html.setAttribute('data-theme', e.matches ? 'dark' : 'light');
     }
   });
+
+  var header = document.querySelector('header');
+  function updateHeader() {
+    header.classList.toggle('scrolled', window.scrollY > 0);
+  }
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  updateHeader();
 })();
