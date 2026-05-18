@@ -2,29 +2,51 @@
 layout: default
 ---
 
-<a href="{{ '/' | relative_url }}" class="back-link">All Posts</a>
+<div class="post-outer">
+  <aside class="sidebar" aria-label="Recent articles">
+    <p class="sidebar-heading">Recent</p>
+    <ul class="sidebar-posts">
+      {% assign shown = 0 %}
+      {% for post in site.posts %}
+        {% unless post.url == page.url %}
+          {% if shown < 5 %}
+            <li class="sidebar-post">
+              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+            </li>
+            {% assign shown = shown | plus: 1 %}
+          {% endif %}
+        {% endunless %}
+      {% endfor %}
+    </ul>
+  </aside>
 
-<article>
-  <header class="post-header">
-    <div class="post-meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
-      {% assign words = page.content | strip_html | number_of_words %}
-      {% if words < 200 %}{% assign rt = 1 %}{% else %}{% assign rt = words | divided_by: 200 %}{% endif %}
-      <span>{{ rt }} min read</span>
-    </div>
-    <h1>{{ page.title }}</h1>
-    {% if page.tags.size > 0 %}
-      <div class="tags">
-        {% for tag in page.tags %}
-          <a href="{{ '/tags' | relative_url }}#{{ tag | slugify }}" class="tag">{{ tag }}</a>
-        {% endfor %}
+  <div class="post-main-col">
+    <a href="{{ '/' | relative_url }}" class="back-link">All Posts</a>
+
+    <article>
+      <header class="post-header">
+        <div class="post-meta">
+          <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+          {% assign words = page.content | strip_html | number_of_words %}
+          {% if words < 200 %}{% assign rt = 1 %}{% else %}{% assign rt = words | divided_by: 200 %}{% endif %}
+          <span>{{ rt }} min read</span>
+        </div>
+        <h1>{{ page.title }}</h1>
+        {% if page.tags.size > 0 %}
+          <div class="tags">
+            {% for tag in page.tags %}
+              <a href="{{ '/tags' | relative_url }}#{{ tag | slugify }}" class="tag">{{ tag }}</a>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </header>
+
+      <hr>
+
+      <div class="post-content">
+        {{ content }}
       </div>
-    {% endif %}
-  </header>
-
-  <hr>
-
-  <div class="post-content">
-    {{ content }}
+    </article>
   </div>
-</article>
+</div>

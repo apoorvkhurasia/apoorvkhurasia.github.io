@@ -274,6 +274,68 @@ footer {
 .pagination a:hover { background: var(--bg-alt); text-decoration: none; color: var(--text); }
 .pagination .disabled { color: var(--text-muted); opacity: .45; cursor: default; }
 
+/* ── Post Sidebar Layout ────────────────────────────────────────────────── */
+
+.post-outer {
+  display: flex;
+  gap: 3rem;
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  align-items: flex-start;
+}
+
+.sidebar {
+  width: 190px;
+  flex-shrink: 0;
+  position: sticky;
+  top: calc(58px + 3rem);
+}
+
+.sidebar-heading {
+  font-size: .6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text-muted);
+  margin: 0 0 .625rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar-posts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-post {
+  padding: .5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.sidebar-post:last-child { border-bottom: none; }
+
+.sidebar-post a {
+  display: block;
+  font-size: .8125rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.4;
+  margin-bottom: .2rem;
+}
+.sidebar-post a:hover { color: var(--accent); text-decoration: none; }
+
+.sidebar-post time {
+  font-size: .75rem;
+  color: var(--text-muted);
+}
+
+.post-main-col {
+  flex: 1;
+  min-width: 0;
+  max-width: 740px;
+}
+
 /* ── Post Page ──────────────────────────────────────────────────────────── */
 
 .back-link {
@@ -381,6 +443,11 @@ footer {
 [data-theme="dark"] .highlight .gi { color:#86efac; background:#052e16 }
 
 /* ── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 860px) {
+  .sidebar { display: none; }
+  .post-outer { max-width: 740px; }
+}
 
 @media (max-width: 600px) {
   .post-header h1 { font-size: 1.625rem; }
