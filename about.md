@@ -1,9 +1,7 @@
 ---
 layout: default
-title: About
+title: About Me
 ---
-
-# About
 
 Hi, I'm **Apoorv Khurasia**. I live in Kent, England and enjoy my time reading almost anything that piques my curiosity --- preferably in my garden, next to my pond.
 
